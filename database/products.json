@@ -1,0 +1,35 @@
+[
+    {
+        "id": "BD62141A",
+        "name": "Starboy Hot Tee",
+        "category": "Hot Tee",
+        "purchase_price": 550.01,
+        "sell_price": 950.0,
+        "quantity": 8,
+        "barcode": "PRODBD62141A",
+        "image": "490575106_122131694354712813_7086125814890212699_n.jpg",
+        "buy_link": ""
+    },
+    {
+        "id": "803C8169",
+        "name": "Netflix 1 Months",
+        "category": "OTT Platforms",
+        "purchase_price": 200.0,
+        "sell_price": 300.0,
+        "quantity": 8,
+        "barcode": "PROD803C8169",
+        "image": "download.jpeg",
+        "buy_link": "https://discord.com/channels/@me/1215995701775962184/1397528712202813460"
+    },
+    {
+        "id": "D79539AA",
+        "name": "Spotify 1 Month",
+        "category": "OTT Platforms",
+        "purchase_price": 100.0,
+        "sell_price": 150.0,
+        "quantity": 10,
+        "barcode": "PRODD79539AA",
+        "image": "download_3.png",
+        "buy_link": "https://discord.com/channels/@me/1215995701775962184/1397528712202813460"
+    }
+]

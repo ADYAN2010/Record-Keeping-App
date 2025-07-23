@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="{{ url_for('dashboard') }}" class="logo">Sioré</a>
+
+    <ul class="nav-links">
+      <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+      <li><a href="{{ url_for('sales_page') }}">Sales</a></li>
+      <li><a href="{{ url_for('revenue') }}">Revenue</a></li>
+      {% if user and user.role == 'admin' %}
+        <li><a href="{{ url_for('add_product') }}">Add Product</a></li>
+      {% endif %}
+      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+  </div>
+</nav>

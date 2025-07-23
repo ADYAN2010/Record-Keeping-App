@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Print Barcode | Product Records</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<style>
+  .barcode-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  img {
+    max-width: 300px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="barcode-container">
+  <h2>Barcode for {{ product.name }}</h2>
+  <img src="{{ url_for('generate_barcode', id=product.id) }}" alt="Barcode" />
+  <br />
+  <button onclick="window.print()">Print</button>
+</div>
+</body>
+</html>

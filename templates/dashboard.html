@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard | Product Records</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container">
+    <h1>Product Dashboard</h1>
+
+    <!-- Search & Category Filter -->
+    <form method="get" action="{{ url_for('dashboard') }}" class="filter-bar">
+      <input type="text" name="search" placeholder="Search by name or serial..." value="{{ request.args.get('search', '') }}">
+      <input type="text" name="category" placeholder="Filter by category..." value="{{ request.args.get('category', '') }}">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, msg in messages %}
+            <div class="flash {{ category }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      {% for product in products %}
+        <div class="product-card">
+          <img src="{{ url_for('static', filename='uploads/product_images/' + product.image) }}" alt="{{ product.name }}" />
+          <h3>{{ product.name }}</h3>
+          <p>Serial: {{ product.id }}</p>
+          <p>Category: {{ product.category }}</p>
+          <p>Price: ৳{{ product.sell_price }}</p>
+          <p>Stock: {{ product.quantity }}</p>
+
+          <!-- Barcode -->
+          {% if product.id %}
+            <div class="barcode-wrapper">
+              <img src="{{ url_for('static', filename='uploads/barcodes/' + product.id + '.png') }}" alt="Barcode for {{ product.name }}" class="barcode-image" />
+            </div>
+          {% endif %}
+
+          <!-- Action Buttons -->
+          <div class="btn-group">
+            <a href="{{ url_for('edit_product', id=product.id) }}" class="btn edit-btn">Edit</a>
+            <a href="{{ url_for('delete_product', id=product.id) }}" class="btn delete-btn" onclick="return confirm('Delete this product?')">Delete</a>
+            <a href="{{ url_for('sell_product', id=product.id) }}" class="btn sell-btn">Sell</a>
+          </div>
+        </div>
+      {% else %}
+        <p>No products available.</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

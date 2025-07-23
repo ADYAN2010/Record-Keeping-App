@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Edit Product | Product Records</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container form-container">
+  <h2>Edit Product - {{ product.name }}</h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, msg in messages %}
+        <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endwith %}
+  <form method="POST" enctype="multipart/form-data">
+    <label>Product Name</label>
+    <input type="text" name="name" value="{{ product.name }}" required />
+
+    <label>Category</label>
+    <input type="text" name="category" value="{{ product.category }}" required />
+
+    <label>Purchase Price</label>
+    <input type="number" step="0.01" name="purchase_price" value="{{ product.purchase_price }}" required />
+
+    <label>Sell Price</label>
+    <input type="number" step="0.01" name="sell_price" value="{{ product.sell_price }}" required />
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" value="{{ product.quantity }}" required />
+
+    <label>Barcode</label>
+    <input type="text" name="barcode" value="{{ product.barcode }}" required />
+
+    <label>Buy Link (optional)</label>
+    <input type="url" name="buy_link" value="{{ product.buy_link }}" />
+
+    <label>Change Product Image (optional)</label>
+    <input type="file" name="image" accept="image/*" />
+
+    <button type="submit">Update Product</button>
+  </form>
+</div>
+</body>
+</html>

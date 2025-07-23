@@ -1,0 +1,6 @@
+Flask==2.3.2
+Werkzeug==2.3.4
+python-barcode==0.14.0
+Pillow==9.5.0         # Required for barcode image rendering
+reportlab==3.6.12     # Optional: for some barcode formats (like PDF417)
+fpdf==1.7.2           # Required for PDF export

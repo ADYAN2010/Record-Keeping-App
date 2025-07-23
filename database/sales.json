@@ -1,0 +1,30 @@
+[
+    {
+        "product_id": "BD62141A",
+        "name": "Starboy Hot Tee",
+        "revenue": 950.0,
+        "profit": 399.99,
+        "date": "2025-07-23 16:35"
+    },
+    {
+        "product_id": "BD62141A",
+        "name": "Starboy Hot Tee",
+        "revenue": 950.0,
+        "profit": 399.99,
+        "date": "2025-07-23 16:44"
+    },
+    {
+        "product_id": "803C8169",
+        "name": "Netflix 1 Months",
+        "revenue": 300.0,
+        "profit": 100.0,
+        "date": "2025-07-23 16:46"
+    },
+    {
+        "product_id": "803C8169",
+        "name": "Netflix 1 Months",
+        "revenue": 300.0,
+        "profit": 100.0,
+        "date": "2025-07-23 16:48"
+    }
+]

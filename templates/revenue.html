@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Revenue | Product Records</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container">
+  <h1>Revenue & Profit</h1>
+  <p><strong>Total Revenue:</strong> ৳{{ "%.2f"|format(revenue) }}</p>
+  <p><strong>Total Profit:</strong> ৳{{ "%.2f"|format(profit) }}</p>
+
+  <h2>Sales Details</h2>
+  {% if sales %}
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Revenue</th>
+        <th>Profit</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in sales %}
+      <tr>
+        <td>{{ s.name }}</td>
+        <td>৳{{ "%.2f"|format(s.revenue) }}</td>
+        <td>৳{{ "%.2f"|format(s.profit) }}</td>
+        <td>{{ s.date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>No sales recorded.</p>
+  {% endif %}
+</div>
+</body>
+</html>

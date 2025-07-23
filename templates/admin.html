@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><title>Add/Edit Product</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+{% include 'navbar.html' %}
+<div class="container">
+  <form method="POST" enctype="multipart/form-data" style="max-width:500px;margin:30px auto;background:white;padding:20px;border-radius:6px;">
+    <h2>{{ product and 'Edit' or 'Add' }} Product</h2>
+    {% with msgs=get_flashed_messages(with_categories=true) %}
+      {% for c,m in msgs %}<div class="alert {{c}}">{{m}}</div>{% endfor %}
+    {% endwith %}
+    <div class="form-group"><input name="name" placeholder="Product Name" value="{{ product.name if product }}"></div>
+    <div class="form-group"><textarea name="description" placeholder="Description">{{ product.description if product }}</textarea></div>
+    <div class="form-group"><input name="buy_price" type="number" step="0.01" placeholder="Buy Price" value="{{ product.buy_price if product }}"></div>
+    <div class="form-group"><input name="sell_price" type="number" step="0.01" placeholder="Sell Price" value="{{ product.sell_price if product }}"></div>
+    <div class="form-group"><input name="buy_link" type="url" placeholder="Buy Link" value="{{ product.link if product }}"></div>
+    <div class="form-group"><input type="file" name="image" {{ 'required' if not product }}></div>
+    <button class="btn btn-primary">{{ product and 'Update' or 'Add' }} Product</button>
+  </form>
+</div></body></html>

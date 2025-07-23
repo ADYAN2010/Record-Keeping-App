@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Add Product | Product Records</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container form-container">
+  <h2>Add New Product</h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, msg in messages %}
+        <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endwith %}
+  <form method="POST" enctype="multipart/form-data">
+    <label>Product Name</label>
+    <input type="text" name="name" value="{{ data.name if data else '' }}" required />
+
+    <label>Category</label>
+    <input type="text" name="category" value="{{ data.category if data else '' }}" required />
+
+    <label>Purchase Price</label>
+    <input type="number" step="0.01" name="purchase_price" value="{{ data.purchase_price if data else '' }}" required />
+
+    <label>Sell Price</label>
+    <input type="number" step="0.01" name="sell_price" value="{{ data.sell_price if data else '' }}" required />
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" value="{{ data.quantity if data else '' }}" required />
+
+    <label>Buy Link (optional)</label>
+    <input type="url" name="buy_link" value="{{ data.buy_link if data else '' }}" />
+
+    <label>Product Image</label>
+    <input type="file" name="image" accept="image/*" required />
+
+    <button type="submit">Add Product</button>
+  </form>
+</div>
+</body>
+</html>
