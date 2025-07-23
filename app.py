@@ -283,8 +283,6 @@ def export_pdf():
 
     return send_file(filepath, as_attachment=True)
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
 EAN = barcode.get_barcode_class('code128')
 my_code = EAN('123456789012', writer=ImageWriter())
@@ -296,3 +294,9 @@ my_code.save('uploads/barcodes/123456789012', {
     'quiet_zone': 1,
     'dpi': 300                  # high quality
 })
+
+
+if __name__ == '__main__':
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
